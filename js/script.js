@@ -4,7 +4,13 @@ const loadingAllPhones = async (showStatus, searchText) => {
 
     const response = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText ? searchText : "iphone"}`)
     const data = await response.json();
-    console.log(data.data);
+    const dataNotFound = document.getElementById("not-data-found")
+    
+    if(data.data.length == 0){
+        document.getElementById("spinner").style.display = "none";
+        dataNotFound.innerHTML = `<h1 class="text-center text-4xl my-6 text-red-400">No data Found</h1>`
+        console.log(data.data);
+    }
     if (showStatus) {
         displayAllPhone(data.data);
     } else {
@@ -14,6 +20,7 @@ const loadingAllPhones = async (showStatus, searchText) => {
 }
 
 const displayAllPhone = (phones) => {
+    document.getElementById("card-container").innerHTML = "";
     const phoneContainer = document.getElementById("card-container");
     phones.forEach(phone => {
         const { image, slug, phone_name, brand } = phone;
@@ -27,10 +34,11 @@ const displayAllPhone = (phones) => {
     <h2 class="text-xl font-semibold text-blue-400">${phone_name}</h2>
     <h2 class="text-lg text-gray-400">${slug}</h2>
     <p class="text-gray-300">${brand}</p>
-    <div class="mt-4">
-      <button class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg shadow-md transition-all duration-300">View Details</button>
-    </div>
+  
   </div>
+    <div class="mt-4">
+      <button onclick="phoneDetails('${slug}')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg shadow-md transition-all duration-300">View Details</button>
+    </div>
 </div>
 
            
@@ -53,5 +61,31 @@ const handelSearch = () => {
     setTimeout(function () {
         loadingAllPhones(false, searchText);
     }, 3000)
+}
+
+const phoneDetails = async(slugs) => {
+    const response = await fetch(`https://openapi.programming-hero.com/api/phone/${slugs}`)
+    const data = await response.json();
+    console.log(data.data);
+    const {brand,phone_name,slug,image} = data.data;
+    console.log(data.data);
+    const modalContainer = document.getElementById("modal-container");
+    modalContainer.innerHTML = `
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+          <h3 class="text-lg font-bold">${brand}</h3>
+          <p class="py-4">Press ESC key or click the button below to close</p>
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    `
+    my_modal_1.showModal();
+
+    
 }
 loadingAllPhones(false, "iphone");

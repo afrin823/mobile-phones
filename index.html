@@ -25,36 +25,24 @@
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                    <li><a>Item 1</a></li>
-                    <li>
-                        <a>Parent</a>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a>Item 3</a></li>
+                    <li><a>Home</a></li>
+                    <li><a>About</a></li>
+                    <li><a>Blog</a></li>
+                    <li><a>Contact</a></li>
                 </ul>
             </div>
             <a class="btn btn-ghost text-xl">Mobile Shop</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li><a>Item 1</a></li>
-                <li>
-                    <details>
-                        <summary>Parent</summary>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </details>
-                </li>
-                <li><a>Item 3</a></li>
+                <li><a>Home</a></li>
+                <li><a>About</a></li>
+                <li><a>Blog</a></li>
+                <li><a>Contact</a></li>
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="btn">Button</a>
+            <a class="btn">LogIn</a>
         </div>
     </div>
     <!-- hero area  -->
@@ -74,25 +62,34 @@
     </div>
 
     <!-- search area  -->
-     <div class="max-w-2xl mx-auto my-4">
+    <div class="max-w-2xl mx-auto my-4">
         <div class=" flex items-center">
-            <input id="search-box" type="text" class="grow input input-bordered" placeholder="Search" />    
-            <button onclick="handelSearch()" class="btn btn-primary">Search</button>   
+            <input id="search-box" type="text" class="grow input input-bordered" placeholder="Search" />
+            <button onclick="handelSearch()" class="btn btn-primary">Search</button>
         </div>
-    
-     </div>
 
-     <!-- card  -->
-      <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+    </div>
+   
 
-      </div>
+    <!-- card  -->
+      <!-- loading  -->
+       <div id="not-data-found">
 
-     <!-- loading  -->
-     <span id="spinner" class="loading hidden loading-spinner loading-lg"></span>
-     <!-- show all button  -->
-      <div class="text-center">
+       </div>
+    <span id="spinner" class="loading hidden text-center loading-spinner loading-lg"></span>
+    <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+    </div>
+
+
+    <!-- show all button  -->
+    <div class="text-center">
         <button onclick="showAll()" class="btn btn-primary w-96 my-4">Show All</button>
-      </div>
+    </div>
+
+    <!-- modal  -->
+    <div id="modal-container">
+
+    </div>
 
     <!-- footer area  -->
     <footer class="footer bg-base-200 text-base-content p-10">
@@ -132,7 +129,7 @@
     </footer>
 
     <!-- js file  -->
-     <script src="./js/script.js"></script>
+    <script src="./js/script.js"></script>
 
 </body>
 
