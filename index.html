@@ -36,7 +36,6 @@
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
                 <li><a>Home</a></li>
-                <li><a>About</a></li>
                 <li><a>Blog</a></li>
                 <li><a>Contact</a></li>
             </ul>
@@ -62,21 +61,24 @@
     </div>
 
     <!-- search area  -->
-    <div class="max-w-2xl mx-auto my-4">
-        <div class=" flex items-center">
+    <div class="max-w-2xl mx-auto my-4 ">
+        <div class=" flex items-center gap-2">
             <input id="search-box" type="text" class="grow input input-bordered" placeholder="Search" />
             <button onclick="handelSearch()" class="btn btn-primary">Search</button>
         </div>
 
     </div>
+
+
    
-
-    <!-- card  -->
-      <!-- loading  -->
-       <div id="not-data-found">
-
-       </div>
-    <span id="spinner" class="loading hidden text-center loading-spinner loading-lg"></span>
+   <!-- no data found  -->
+    <div id="not-data-found">
+    </div>
+       <!-- loading  -->
+    <div class="flex justify-center my-6">
+        <span id="spinner" class="loading hidden loading-spinner loading-lg"></span>
+    </div>
+     <!-- card  -->
     <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
     </div>
 
